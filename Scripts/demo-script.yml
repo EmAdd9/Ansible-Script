@@ -1,0 +1,28 @@
+- hosts: all
+  vars:
+   - name: Sudeb
+  tasks:
+    - name: Print Message
+      debug:
+        msg: Hello Ansible World
+  tasks:
+    - name: Print Variable
+      debug:
+        msg: "Hello {{name}}"
+  tasks:
+    - name: Create directory
+      file:
+        path: /home/ubuntu/abc
+        state: directory
+- hosts: vm
+  tasks:
+    - name: Ansible apt install JDK
+      apt:
+         name: openjdk-11-jre
+         state: present
+- hosts: vm
+  tasks:
+    - name: Ansible apt install Maven
+      apt:
+         name: maven
+         state: present
