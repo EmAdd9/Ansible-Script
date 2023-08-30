@@ -1,0 +1,20 @@
+- hosts: all
+  tasks:
+    - name: Print Message
+      debug:
+         msg: Hello Ansible World
+  tasks:
+    - name: check if folder exists
+      stat:
+         path: /home/ubuntu/Petclinic
+      register: file
+    - name: Git Cloning
+      shell: |
+          cd /home/ubuntu/
+          git clone https://github.com/EmAdd9/Petclinic.git
+      when: not file.stat.exists
+    - name: Build and Deploy
+      shell: |
+          cd /home/ubuntu/Petclinic
+          mvn clean package
+          cp target/petclinic.war /usr/share/tomcat/webapps
