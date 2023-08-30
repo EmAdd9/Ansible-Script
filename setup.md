@@ -17,10 +17,7 @@
    ssh-keygen
    ```
 
-2. Copy the public key to managed nodes:
-   ```bash
-   ssh-copy-id user@managed_node_ip
-   ```
+2. Copy the public key to managed nodes authorized_key.
 
 ## Inventory Setup
 
